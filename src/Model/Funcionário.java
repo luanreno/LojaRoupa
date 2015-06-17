@@ -9,31 +9,25 @@ package Model;
  * @author info206
  */
 public class Funcionário {
-    String nome, endereco, telefone, email, cpf, login, senha, tipoAcesso;
+    String nome, endereco, telefone, email, cpf;
     int id, rg;
 
-    public Funcionário(String nome, String endereco, String telefone, String email, String cpf, String login, String senha, String tipoAcesso, int id, int rg) {
+    public Funcionário(String nome, String endereco, String telefone, String email, String cpf, int id, int rg) {
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
         this.email = email;
         this.cpf = cpf;
-        this.login = login;
-        this.senha = senha;
-        this.tipoAcesso = tipoAcesso;
         this.id = id;
         this.rg = rg;
     }
 
-    public Funcionário(String nome, String endereco, String telefone, String email, String cpf, String login, String senha, String tipoAcesso, int rg) {
+    public Funcionário(String nome, String endereco, String telefone, String email, String cpf, int rg) {
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
         this.email = email;
         this.cpf = cpf;
-        this.login = login;
-        this.senha = senha;
-        this.tipoAcesso = tipoAcesso;
         this.rg = rg;
     }
 
@@ -75,30 +69,6 @@ public class Funcionário {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getTipoAcesso() {
-        return tipoAcesso;
-    }
-
-    public void setTipoAcesso(String tipoAcesso) {
-        this.tipoAcesso = tipoAcesso;
     }
 
     public int getId() {

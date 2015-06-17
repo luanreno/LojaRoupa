@@ -9,10 +9,10 @@ package Model;
  * @author info206
  */
 public class Cliente {
-    String cpf, nome, telefone, email, bairro, complemento, cidade, numero, rua, datanascimento;
-    int id;
+    String nome, email, bairro, complemento, cidade;
+    int id, telefone, rg, cpf;
 
-    public Cliente(String cpf, String nome, String telefone, String email, String bairro, String complemento, String cidade, String numero, String rua, String datanascimento, int id) {
+    public Cliente(int rg, int cpf, String nome, int telefone, String email, String bairro, String complemento, String cidade,int id) {
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
@@ -20,13 +20,11 @@ public class Cliente {
         this.bairro = bairro;
         this.complemento = complemento;
         this.cidade = cidade;
-        this.numero = numero;
-        this.rua = rua;
-        this.datanascimento = datanascimento;
         this.id = id;
+        this.rg = rg;
     }
     
-    public Cliente(String cpf, String nome, String telefone, String email, String bairro, String complemento, String cidade, String numero, String rua, String datanascimento) {
+    public Cliente(int rg, int cpf, String nome, int telefone, String email, String bairro, String complemento, String cidade) {
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
@@ -34,16 +32,14 @@ public class Cliente {
         this.bairro = bairro;
         this.complemento = complemento;
         this.cidade = cidade;
-        this.numero = numero;
-        this.rua = rua;
-        this.datanascimento = datanascimento;      
+        this.rg = rg;
         
     }
-    public String getCpf() {
+    public int getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf() {
         this.cpf = cpf;
     }
 
@@ -55,11 +51,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
 
@@ -95,30 +91,6 @@ public class Cliente {
         this.cidade = cidade;
     }
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public String getDatanascimento() {
-        return datanascimento;
-    }
-
-    public void setDatanascimento(String datanascimento) {
-        this.datanascimento = datanascimento;
-    }
-
     public int getId() {
         return id;
     }
@@ -126,4 +98,13 @@ public class Cliente {
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getRg() {
+        return rg;
+    }
+
+    public void setRg(int rg) {
+        this.rg = rg;
+    }
+    
 }

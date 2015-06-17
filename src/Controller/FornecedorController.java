@@ -25,7 +25,7 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Fornecedor (cnpj, nomeEmpresa, detalhesCompra, id_Fornecedor) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO Fornecedor (cnpj, nomeEmpresa, detalhesCompra, idFornecedor) VALUES (?, ?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
         statement.setString(1, f.getCnpj());

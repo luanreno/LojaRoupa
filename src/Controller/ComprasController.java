@@ -24,16 +24,16 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Compras (notafiscal, data, total, dinheiro, troco, detalhecompras, id_Compras) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO Compras (notafiscal, data, total, dinheiro, troco, detalhescompra, idCompras) VALUES (?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
         statement.setString(1, c.getNotafiscal());
         statement.setString(2, c.getData());
         statement.setString(3, c.getTotal ());
-        statement.setString(4, c.getDinheiro());
+        statement.setFloat(4, c.getDinheiro());
         statement.setString(5, c.getTroco());
-        statement.setString(6, c.getDetalhecompras());
-        statement.setInt(6, c.getId());
+        statement.setString(6, c.getDetalhescompra());
+        statement.setInt(7, c.getId());
         
     int rowsInserted = statement.executeUpdate(); 
     if (rowsInserted > 0){
@@ -62,12 +62,12 @@ try {
                 String notafiscal = result.getString("notafiscal");
                 String data = result.getString("data");
                 String total = result.getString("total");
-                String dinheiro = result.getString ("dinheiro");
+                Float dinheiro = result.getFloat ("dinheiro");
                 String troco = result.getString("troco");
-                String detalhecompras = result.getString("detalhecompras");
+                String detalhescompra = result.getString("detalhescompra");
                 String output = "Compras #%d: %s - %s - %s - %s - %s - %s";
                 
-                System.out.println(String.format(output, ++count, notafiscal, data, total, dinheiro, troco, detalhecompras));
+                System.out.println(String.format(output, ++count, notafiscal, data, total, dinheiro, troco, detalhescompra));
  
                 statement.close();
                 conexao.close();

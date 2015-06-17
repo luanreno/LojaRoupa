@@ -10,12 +10,26 @@ package Model;
  */
 public class Login {
     String senha, usuario;
+    int  idFuncionário;
 
     public Login(String senha, String usuario) {
         this.senha = senha;
         this.usuario = usuario;
     }
 
+    public Login(int idFuncionário) {
+        this.idFuncionário = idFuncionário;
+    }
+
+    public int getIdFuncionário() {
+        return idFuncionário;
+    }
+
+    public void setIdFuncionário(int idFuncionário) {
+        this.idFuncionário = idFuncionário;
+    }
+
+    
     public String getSenha() {
         return senha;
     }

@@ -25,15 +25,15 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Produtos (nome, quantidademinima, descricaoProduto, dataChegada, precoCompra, precoVenda) VALUES (?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO Produtos (nome, quantidademinima, dataChegada, precoCompra, precoVenda, idFornecedor) VALUES (?, ?, ?, ?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
         statement.setString(1, p.getNome());
         statement.setString(2, p.getquantidademinima());
-        statement.setString(3, p.getDescricaoProduto());
-        statement.setString(4, p.getDataChegada());
-        statement.setString(5, p.getPrecoCompra());
-        statement.setString(6, p.getPrecoVenda());
+        statement.setString(3, p.getDataChegada());
+        statement.setString(4, p.getPrecoCompra());
+        statement.setString(5, p.getPrecoVenda());
+        statement.setInt(6, p.getIdFornecedor());
         
     int rowsInserted = statement.executeUpdate(); 
     if (rowsInserted > 0){
@@ -61,14 +61,13 @@ try {
                 
                 String nome = result.getString("nome");
                 String quantidademinima = result.getString("quantidademinima");
-                String descricaoProduto = result.getString("descricaoproduto");
-                String dataChegada = result.getString("datachegada");
-                String precoCompra = result.getString("precocompra");
-                String precoVenda = result.getString("venda");
+                String dataChegada = result.getString("dataChegada");
+                String precoCompra = result.getString("precoCompra");
+                String precoVenda = result.getString("precoVenda");
 
-                String output = "Compras #%d: %s - %s - %s - %s - %s - %s - ";
+                String output = "Produto #%d: %s - %s - %s - %s - %s - %s";
                 
-                System.out.println(String.format(output, ++count, nome, quantidademinima, descricaoProduto, dataChegada, precoCompra, precoVenda ));
+                System.out.println(String.format(output, ++count, nome, quantidademinima, dataChegada, precoCompra, precoVenda ));
  
                 statement.close();
                 conexao.close();

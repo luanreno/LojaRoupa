@@ -4,7 +4,6 @@
  */
 package Controller;
 
-import Model.Fornecedor;
 import Model.Login;
 import View.Util;
 import java.sql.Connection;
@@ -24,15 +23,16 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Login(senha, usuario) VALUES (?, ?)";
+    String sql = "INSERT INTO Login(senha, usuario, idFuncionário) VALUES (?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
         statement.setString(1, l.getSenha());
         statement.setString(2, l.getUsuario());
+        statement.setInt(3, l.getIdFuncionário());
         
     int rowsInserted = statement.executeUpdate(); 
     if (rowsInserted > 0){
-    System.out.println ("Novo login inserido com sucesso");
+    System.out.println ("Novo Login inserido com sucesso");
 }
         statement.close();
         conexao.close();
@@ -41,10 +41,10 @@ try {
     System.out.println(e.getMessage());
     }
 }
-
-    public void selectLogin()throws SQLException {
+    public int autentica(String senha, String usuario)throws SQLException {
+      int  ok= -1;
     
-            String sql = "SELECT * FROM login";
+            String sql = "SELECT * FROM Login WHERE usuario like '"+usuario+"' AND senha like '"+senha+"'";
             Util util= new Util();
             Connection conexao = util.conecta();
 
@@ -53,16 +53,13 @@ try {
             
             int count = 0;
             while (result.next()){
-                
-                String senha = result.getString("senha");
-                String usuario = result.getString("usuario");
-
-                String output = "Login #%d: %s - %s";
-                
-                System.out.println(String.format(output, ++count, senha, usuario));
+           ok= 1;
  
-                statement.close();
-                conexao.close();
+               
         }
+             statement.close();
+                conexao.close();
+                return  ok;
+           
     }
 }

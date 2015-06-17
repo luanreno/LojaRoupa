@@ -10,19 +10,17 @@ package Model;
  */
 public class Venda {
      int id;
-     String produto, data, total, dinheiro, troco;
+     String data, total, dinheiro, troco;
 
-    public Venda(int id, String produto, String data, String total, String dinheiro, String troco) {
+    public Venda(int id, String data, String total, String dinheiro, String troco) {
         this.id = id;
-        this.produto = produto;
         this.data = data;
         this.total = total;
         this.dinheiro = dinheiro;
         this.troco = troco;
     }
 
-    public Venda(String produto, String data, String total, String dinheiro, String troco) {
-        this.produto = produto;
+    public Venda(String data, String total, String dinheiro, String troco) {
         this.data = data;
         this.total = total;
         this.dinheiro = dinheiro;
@@ -35,14 +33,6 @@ public class Venda {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getProduto() {
-        return produto;
-    }
-
-    public void setProduto(String produto) {
-        this.produto = produto;
     }
 
     public String getData() {

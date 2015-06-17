@@ -10,24 +10,23 @@ package Model;
  */
 public class Produtos {
     
-      String nome, codigoproduto, quantidademinima, descricaoProduto, dataChegada, precoCompra, precoVenda;
-      int id;
+      String nome, codigoproduto, quantidademinima, dataChegada, precoCompra, precoVenda;
+      int id, idFornecedor;
 
-    public Produtos(String codigoproduto, String nome, String quantidademinima, String descricaoProduto, String dataChegada, String precoCompra, String precoVenda, int id) {
+    public Produtos(String codigoproduto, String nome, String quantidademinima, String dataChegada, String precoCompra, String precoVenda, int id, int idFornecedor) {
         this.nome = nome;
         this.quantidademinima = quantidademinima;
-        this.descricaoProduto = descricaoProduto;
         this.dataChegada = dataChegada;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
         this.codigoproduto = codigoproduto; 
         this.id = id;
+        this.idFornecedor = idFornecedor;
     }
 
-    public Produtos(String codigoproduto, String nome, String quantidademinima, String descricaoProduto, String dataChegada, String precoCompra, String precoVenda) {
+    public Produtos(String codigoproduto, String nome, String quantidademinima, String dataChegada, String precoCompra, String precoVenda) {
         this.nome = nome;
         this.quantidademinima = quantidademinima;
-        this.descricaoProduto = descricaoProduto;
         this.dataChegada = dataChegada;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
@@ -49,15 +48,6 @@ public class Produtos {
     public void setquantidademinima(String quantidademinima) {
         this.quantidademinima = quantidademinima;
     }
-
-    public String getDescricaoProduto() {
-        return descricaoProduto;
-    }
-
-    public void setDescricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
-    }
-
     public String getDataChegada() {
         return dataChegada;
     }
@@ -96,6 +86,14 @@ public class Produtos {
 
     public void setCodigoproduto(String codigoproduto) {
         this.codigoproduto = codigoproduto;
+    }
+
+    public int getIdFornecedor() {
+        return idFornecedor;
+    }
+
+    public void setIdFornecedor(int idFornecedor) {
+        this.idFornecedor = idFornecedor;
     }
     
 }

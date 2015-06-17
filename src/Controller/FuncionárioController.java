@@ -23,18 +23,16 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO funcionário (nome, endereco, telefone, email, cpf, login, senha, tipoAcesso, rg, id_Fornecedor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO Funcionário (nome, endereco, telefone, email, cpf, rg, idFuncionário) VALUES (?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
         statement.setString(1, f.getNome());
         statement.setString(2, f.getEndereco());
         statement.setString(3, f.getTelefone ());
-        statement.setString(4, f.getCpf());
-        statement.setString(5, f.getLogin());
-        statement.setString(6, f.getSenha());
-        statement.setString (7, f.getTipoAcesso());
-        statement.setInt (8, f.getRg());
-        statement.setInt(9, f.getId());
+        statement.setString (4, f.getEmail ());
+        statement.setString(5, f.getCpf());
+        statement.setInt (6, f.getRg());
+        statement.setInt(7, f.getId());
         
     int rowsInserted = statement.executeUpdate(); 
     if (rowsInserted > 0){
@@ -50,7 +48,7 @@ try {
 
     public void selectCliente()throws SQLException {
     
-            String sql = "SELECT * FROM funcionário";
+            String sql = "SELECT * FROM Funcionário";
             Util util= new Util();
             Connection conexao = util.conecta();
 
@@ -65,13 +63,10 @@ try {
                 String telefone = result.getString("telefone");
                 String email = result.getString ("email");
                 String cpf = result.getString ("cpf");
-                String login = result.getString("login");
-                String senha = result.getString("senha");
-                String tipoAcesso = result.getString("tipoAcesso");
                 int rg = result.getInt("rg");
-                String output = "Cliente #%d: %s - %s - %s - %s - %s - %s - %s - %s - %s";
+                String output = "Cliente #%d: %s - %s - %s - %s - %s - %d";
                 
-                System.out.println(String.format(output, ++count, nome, endereco, telefone, email, cpf, login, senha, tipoAcesso, rg));
+                System.out.println(String.format(output, ++count, nome, endereco, telefone, email, cpf, rg));
  
                 statement.close();
                 conexao.close();

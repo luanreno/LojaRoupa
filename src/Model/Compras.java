@@ -9,26 +9,33 @@ package Model;
  * @author info206
  */
 public class Compras {
-    String notafiscal, data, total, dinheiro, troco, detalhecompras;
+    String notafiscal, data, total, troco, detalhescompra;
     int id; 
+    float dinheiro; 
 
-    public Compras(String notafiscal, String data, String total, String dinheiro, String troco, String detalhecompras, int id) {
+    public Compras(String notafiscal, String data, String total, String troco, String detalhescompra, int id) {
         this.notafiscal = notafiscal;
         this.data = data;
         this.total = total;
-        this.dinheiro = dinheiro;
         this.troco = troco;
-        this.detalhecompras = detalhecompras;
+        this.detalhescompra = detalhescompra;
         this.id = id;
     }
 
-    public Compras(String notafiscal, String data, String total, String dinheiro, String troco, String detalhecompras) {
+    public Compras(float dinheiro) {
+        this.dinheiro = dinheiro;
+    }
+
+    public Compras(String notafiscal, String data, String total, String troco, String detalhescompra, float dinheiro) {
         this.notafiscal = notafiscal;
         this.data = data;
         this.total = total;
         this.dinheiro = dinheiro;
         this.troco = troco;
-        this.detalhecompras = detalhecompras;
+        this.detalhescompra = detalhescompra;
+        this.dinheiro = dinheiro;
+    
+  
     }
 
     public String getNotafiscal() {
@@ -55,14 +62,6 @@ public class Compras {
         this.total = total;
     }
 
-    public String getDinheiro() {
-        return dinheiro;
-    }
-
-    public void setDinheiro(String dinheiro) {
-        this.dinheiro = dinheiro;
-    }
-
     public String getTroco() {
         return troco;
     }
@@ -71,12 +70,12 @@ public class Compras {
         this.troco = troco;
     }
 
-    public String getDetalhecompras() {
-        return detalhecompras;
+    public String getDetalhescompra() {
+        return detalhescompra;
     }
 
-    public void setDetalhecompras(String detalhecompras) {
-        this.detalhecompras = detalhecompras;
+    public void setDetalhescompra(String detalhescompra) {
+        this.detalhescompra = detalhescompra;
     }
 
     public int getId() {
@@ -85,6 +84,14 @@ public class Compras {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public float getDinheiro() {
+        return dinheiro;
+    }
+
+    public void setDinheiro(float dinheiro) {
+        this.dinheiro = dinheiro;
     }
     
     

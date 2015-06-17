@@ -23,20 +23,17 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Cliente (cpf, nome, telefone, email, bairro, complemento, cidade, numero, rua, datanascimento, id_Cliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+    String sql = "INSERT INTO Cliente (rg, cpf, nome, telefone, email, bairro, complemento, cidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
-        statement.setString(1, c.getCpf());
-        statement.setString(2, c.getNome());
-        statement.setString(3, c.getTelefone ());
-        statement.setString(4, c.getEmail());
-        statement.setString(5, c.getBairro());
-        statement.setString(6, c.getComplemento());
-        statement.setString (7, c.getCidade());
-        statement.setString (8, c.getNumero());
-        statement.setString (9, c.getRua());
-        statement.setString (10, c.getDatanascimento());
-        statement.setInt(6, c.getId());
+        statement.setInt(1, c.getCpf());
+        statement.setInt (2, c.getRg());
+        statement.setString(3, c.getNome());
+        statement.setInt(4, c.getTelefone ());
+        statement.setString(5, c.getEmail());
+        statement.setString(6, c.getBairro());
+        statement.setString(7, c.getComplemento());
+        statement.setString (8, c.getCidade());
         
     int rowsInserted = statement.executeUpdate(); 
     if (rowsInserted > 0){
@@ -62,19 +59,17 @@ try {
             int count = 0;
             while (result.next()){
                 
-                String cpf = result.getString("cpf");
+                int cpf = result.getInt("cpf");
                 String nome = result.getString("nome");
-                String telefone = result.getString("telefone");
+                int telefone = result.getInt("telefone");
                 String email = result.getString ("email");
                 String bairro = result.getString("bairro");
                 String complemento = result.getString("complemento");
                 String cidade = result.getString("cidade");
-                String numero = result.getString("numero");
-                String rua = result.getString("rua");
-                String datanascimento = result.getString("datanascimento");
-                String output = "Cliente #%d: %s - %s - %s - %s - %s - %s - %s - %s - %s - %s";
+                int rg = result.getInt ("rg");
+                String output = "Cliente #%d: %s - %s - %s - %s - %s - %s - %s - %s";
                 
-                System.out.println(String.format(output, ++count, cpf, nome, telefone, email, bairro, complemento, cidade, numero, rua, datanascimento));
+                System.out.println(String.format(output, ++count, cpf, rg, nome, telefone, email, bairro, complemento, cidade));
  
                 statement.close();
                 conexao.close();

@@ -25,15 +25,14 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Venda (produto, data, total, dinheiro, troco, ID_Venda) VALUES (?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO Venda (data, total, dinheiro, troco, idVenda) VALUES (?, ?, ?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
-        statement.setString(1, v.getProduto());
-        statement.setString(2, v.getData());
-        statement.setString(3, v.getTotal());
-        statement.setString(4, v.getDinheiro());
-        statement.setString(5, v.getTroco());
-        statement.setInt(6, v.getId());
+        statement.setString(1, v.getData());
+        statement.setString(2, v.getTotal());
+        statement.setString(3, v.getDinheiro());
+        statement.setString(4, v.getTroco());
+        statement.setInt(5, v.getId());
         
     int rowsInserted = statement.executeUpdate(); 
     if (rowsInserted > 0){
@@ -59,7 +58,6 @@ try {
             int count = 0;
             while (result.next()){
                 
-                String produto = result.getString("produto");
                 String data = result.getString("data");
                 String total = result.getString("total");
                 String dinheiro = result.getString("dinheiro");
@@ -67,7 +65,7 @@ try {
 
                 String output = "Compras #%d: %s - %s - %s - %s - %s - %s - ";
                 
-                System.out.println(String.format(output, ++count, produto, data, total, dinheiro, troco ));
+                System.out.println(String.format(output, ++count, data, total, dinheiro, troco ));
  
                 statement.close();
                 conexao.close();
