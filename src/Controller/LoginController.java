@@ -24,7 +24,7 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Fornecedor (senha, usuario) VALUES (?, ?)";
+    String sql = "INSERT INTO Login(senha, usuario) VALUES (?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
         statement.setString(1, l.getSenha());
@@ -57,7 +57,7 @@ try {
                 String senha = result.getString("senha");
                 String usuario = result.getString("usuario");
 
-                String output = "Compras #%d: %s - %s";
+                String output = "Login #%d: %s - %s";
                 
                 System.out.println(String.format(output, ++count, senha, usuario));
  
