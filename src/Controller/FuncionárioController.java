@@ -11,6 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -72,4 +76,82 @@ try {
                 conexao.close();
         }
     }
-}
+
+    public ArrayList getAll() throws SQLException {
+     
+        try {
+            String sql = "SELECT * FROM Funcionário";
+
+            Util util = new Util();
+            Connection conexao = util.conecta();
+            Statement statement = conexao.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            ArrayList<Funcionário> lista = new ArrayList<Funcionário>();
+            while (result.next()) {
+            Funcionário f = new Funcionário(result.getString("idFuncionário"), result.getString("nome"), result.getString("endereco"), result.getString("telefone"), result.getString("cpf"), result.getInt("rg"));
+            lista.add(f);
+            }
+
+            statement.close();
+            conexao.close();
+            return lista;
+
+            } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+public Funcionário getDonoByCPF(String cpf) throws SQLException {
+    
+        String sql = "SELECT * FROM dono WHERE cpf like '%" + cpf + "%'"; 
+        Util util = new Util(); 
+        Connection conexao = util.conecta(); 
+        Statement statement = conexao.createStatement();
+        ResultSet result = statement.executeQuery(sql);
+        Funcionário f = null;  
+        while (result.next()) {
+            f = new Funcionário(result.getString("idFuncionário"), result.getString("nome"), result.getString("endereco"), result.getString("telefone"), result.getString("cpf"), result.getInt("rg"));
+        }
+        return f;
+
+    }
+
+public Vector getNomes(){
+    
+                   Vector f =new Vector();
+        try {
+            Util util= new Util();
+            Connection conexao = util.conecta();
+            String sql= "Select * from funcionário";
+                Statement statement = conexao.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()){               
+               f.add(result.getString("Nome"));
+            }
+            
+            } catch (SQLException ex) {
+            Logger.getLogger(FuncionárioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return f;
+    }
+    
+    public int  getIdByNome(String nome){
+        
+        int id=-1;
+            try {
+            Util util= new Util();
+            Connection conexao = util.conecta();
+            String sql= "Select ID from Funcionário where Nome like '"+nome+"'";
+                Statement statement = conexao.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()){               
+               id=result.getInt("idFuncionário");
+            }
+            } catch (SQLException ex) {
+            Logger.getLogger(Funcionário.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return id;
+    }
+    
+ }

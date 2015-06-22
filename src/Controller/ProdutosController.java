@@ -25,7 +25,7 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Produtos (nome, quantidademinima, dataChegada, precoCompra, precoVenda, idFornecedor) VALUES (?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO Produtos (Nome, quantidademinima, dataChegada, precoCompra, precoVenda, idFornecedor) VALUES (?, ?, ?, ?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
         statement.setString(1, p.getNome());
@@ -59,7 +59,7 @@ try {
             int count = 0;
             while (result.next()){
                 
-                String nome = result.getString("nome");
+                String Nome = result.getString("Nome");
                 String quantidademinima = result.getString("quantidademinima");
                 String dataChegada = result.getString("dataChegada");
                 String precoCompra = result.getString("precoCompra");
@@ -67,7 +67,7 @@ try {
 
                 String output = "Produto #%d: %s - %s - %s - %s - %s - %s";
                 
-                System.out.println(String.format(output, ++count, nome, quantidademinima, dataChegada, precoCompra, precoVenda ));
+                System.out.println(String.format(output, ++count, Nome, quantidademinima, dataChegada, precoCompra, precoVenda ));
  
                 statement.close();
                 conexao.close();

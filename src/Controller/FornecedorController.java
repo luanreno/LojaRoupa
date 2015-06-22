@@ -25,14 +25,13 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Fornecedor (cnpj, nomeEmpresa, detalhesCompra, idFornecedor) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO Fornecedor (cnpj, nomeEmpresa, detalhesCompra) VALUES (?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
         statement.setString(1, f.getCnpj());
         statement.setString(2, f.getNomeEmpresa());
         statement.setString(3, f.getDetalhesCompra());
-        statement.setInt(4, f.getId());
-        
+
     int rowsInserted = statement.executeUpdate(); 
     if (rowsInserted > 0){
     System.out.println ("Novo Fornecedor inserido com sucesso");

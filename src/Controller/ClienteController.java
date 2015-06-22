@@ -5,12 +5,17 @@
 package Controller;
 
 import Model.Cliente;
+import Model.Funcionário;
 import View.Util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -49,7 +54,7 @@ try {
 
     public void selectCliente()throws SQLException {
     
-            String sql = "SELECT * FROM cliente";
+            String sql = "SELECT * FROM Cliente";
             Util util= new Util();
             Connection conexao = util.conecta();
 

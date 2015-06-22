@@ -25,14 +25,13 @@ try {
     
     Util util= new Util();
     Connection conexao = util.conecta();  
-    String sql = "INSERT INTO Venda (data, total, dinheiro, troco, idVenda) VALUES (?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO Venda (data, total, dinheiro, troco) VALUES (?, ?, ?, ?)";
     PreparedStatement statement= conexao.prepareStatement(sql);
     
         statement.setString(1, v.getData());
         statement.setString(2, v.getTotal());
         statement.setString(3, v.getDinheiro());
         statement.setString(4, v.getTroco());
-        statement.setInt(5, v.getId());
         
     int rowsInserted = statement.executeUpdate(); 
     if (rowsInserted > 0){
@@ -65,7 +64,7 @@ try {
 
                 String output = "Compras #%d: %s - %s - %s - %s - %s - %s - ";
                 
-                System.out.println(String.format(output, ++count, data, total, dinheiro, troco ));
+                System.out.println(String.format(output, ++count, data, total, dinheiro, troco));
  
                 statement.close();
                 conexao.close();

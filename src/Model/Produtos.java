@@ -10,11 +10,11 @@ package Model;
  */
 public class Produtos {
     
-      String nome, codigoproduto, quantidademinima, dataChegada, precoCompra, precoVenda;
+      String Nome, codigoproduto, quantidademinima, dataChegada, precoCompra, precoVenda;
       int id, idFornecedor;
 
-    public Produtos(String codigoproduto, String nome, String quantidademinima, String dataChegada, String precoCompra, String precoVenda, int id, int idFornecedor) {
-        this.nome = nome;
+    public Produtos(String codigoproduto, String Nome, String quantidademinima, String dataChegada, String precoCompra, String precoVenda, int id, int idFornecedor) {
+        this.Nome = Nome;
         this.quantidademinima = quantidademinima;
         this.dataChegada = dataChegada;
         this.precoCompra = precoCompra;
@@ -24,8 +24,8 @@ public class Produtos {
         this.idFornecedor = idFornecedor;
     }
 
-    public Produtos(String codigoproduto, String nome, String quantidademinima, String dataChegada, String precoCompra, String precoVenda) {
-        this.nome = nome;
+    public Produtos(String codigoproduto, String Nome, String quantidademinima, String dataChegada, String precoCompra, String precoVenda) {
+        this.Nome = Nome;
         this.quantidademinima = quantidademinima;
         this.dataChegada = dataChegada;
         this.precoCompra = precoCompra;
@@ -34,11 +34,11 @@ public class Produtos {
     }
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
     public String getquantidademinima() {
