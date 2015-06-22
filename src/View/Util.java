@@ -61,12 +61,5 @@ public class Util {
     stmt.execute(Script);
     
     }
-    public static void main (String[] args) throws SQLException{
-         Connection conexao = null;
-         conexao= conecta();
-         if(conexao!=null){
-         System.out.println("Ok");
-         }
-    }              
-}    
+}
 
